@@ -1,0 +1,91 @@
+
+---
+// src/pages/sobre.astro
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Sobre — lavoura design">
+ 
+    <div class="max-w-5xl mx-auto px-8 py-20">
+ 
+        <!-- Header da página -->
+        <div class="flex items-end justify-between mb-20 pb-8 border-b border-neutral-900 fade-up">
+            <h1 class="text-[9px] font-mono tracking-[0.4em] text-neutral-600 uppercase">Sobre</h1>
+            <span class="text-[9px] font-mono text-neutral-800">Guilherme Ribeiro</span>
+        </div>
+ 
+        <!-- Bloco principal -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
+ 
+            <div class="fade-up" style="animation-delay: 0.1s">
+                <h2 class="text-white font-light text-3xl leading-snug tracking-tight mb-8">
+                    Olá, sou o Guilherme.
+                    <span class="block text-neutral-600 italic mt-1">Designer gráfico freelancer.</span>
+                </h2>
+                <p class="text-[12px] text-neutral-500 font-light leading-relaxed mb-5">
+                    Trabalho com pequenos negócios, empreendedores e marcas que estão a construir algo com intenção — e que querem que isso se veja.
+                </p>
+                <p class="text-[12px] text-neutral-500 font-light leading-relaxed">
+                    Acredito que o bom design é cultivado. Nasce de uma conversa honesta, cresce com atenção aos detalhes, e só resulta quando está enraizado na realidade de quem o usa.
+                </p>
+            </div>
+ 
+            <div class="fade-up" style="animation-delay: 0.2s">
+                <!-- Placeholder para foto — substituir quando tiveres -->
+                <div class="aspect-[4/5] bg-neutral-950 border border-neutral-900 flex items-end p-4">
+                    <span class="text-[9px] font-mono text-neutral-800 tracking-widest">— Figueira da Foz, Portugal</span>
+                </div>
+            </div>
+ 
+        </div>
+ 
+        <!-- O nome -->
+        <div class="border-t border-neutral-900 pt-16 mb-16 fade-up" style="animation-delay: 0.3s">
+            <p class="text-[9px] font-mono tracking-[0.4em] text-neutral-700 uppercase mb-6">O nome</p>
+            <p class="text-[13px] text-neutral-500 font-light leading-relaxed max-w-lg">
+                Lavoura não é por acaso. É o ato de preparar o terreno para que algo cresça. Cada projeto começa assim — a perceber o solo, a entender o que já existe, antes de plantar qualquer ideia.
+            </p>
+        </div>
+ 
+        <!-- Competências -->
+        <div class="border-t border-neutral-900 pt-16 mb-16 fade-up" style="animation-delay: 0.4s">
+            <p class="text-[9px] font-mono tracking-[0.4em] text-neutral-700 uppercase mb-10">Ferramentas & disciplinas</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {['Figma', 'Adobe Illustrator', 'Adobe Photoshop', 'Affinity Designer', 'Identidade Visual', 'Web Design', 'Print Design', 'Redes Sociais'].map((item, i) => (
+                    <div class="border-b border-neutral-900 pb-3">
+                        <span class="text-[10px] font-mono text-neutral-600 tracking-wide">{item}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+ 
+        <!-- CTA -->
+        <div class="border-t border-neutral-900 pt-16 fade-up" style="animation-delay: 0.5s">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <p class="text-[12px] text-neutral-500 font-light">
+                    Tens um projeto? Vamos conversar.
+                </p>
+                <a href="/contacto" class="group flex items-center gap-4 text-[10px] font-mono tracking-[0.25em] uppercase text-white self-start">
+                    <span class="w-6 h-[1px] bg-white group-hover:w-10 transition-all duration-300"></span>
+                    Falar comigo
+                </a>
+            </div>
+        </div>
+ 
+    </div>
+ 
+</Layout>
+ 
+<style>
+    .fade-up {
+        opacity: 0;
+        transform: translateY(14px);
+        animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes fadeUp {
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .fade-up { animation: none; opacity: 1; transform: none; }
+    }
+</style>
+ 
