@@ -1,0 +1,132 @@
+---
+---
+<div id="cookie-banner" class="fixed bottom-6 right-6 z-50 max-w-sm w-[calc(100%-3rem)] translate-y-12 opacity-0 pointer-events-none transition-all duration-700 ease-out">
+    <div class="bg-[#080808] border border-neutral-800 p-6 shadow-2xl relative overflow-hidden group">
+        
+        <!-- Detalhe estético de canto -->
+        <span class="absolute top-0 right-0 w-2 h-2 border-t border-r border-neutral-600"></span>
+        <span class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-neutral-600"></span>
+
+        <!-- Cabeçalho do aviso -->
+        <div class="flex items-center justify-between mb-4">
+            <span class="text-[8px] font-mono tracking-[0.4em] text-neutral-500 uppercase">
+                [ 00 / política de dados ]
+            </span>
+            <span class="text-[10px] text-neutral-700">⬡</span>
+        </div>
+
+        <!-- Mensagem -->
+        <p class="text-[11px] text-neutral-400 font-light leading-relaxed mb-6">
+            Usamos apenas o estritamente necessário para garantir que este ecossistema digital funcione sem falhas e para entender visitas anónimas. Sem trackers invasivos, palavra de designer.
+        </p>
+
+        <!-- Ações -->
+        <div class="flex items-center justify-between pt-4 border-t border-neutral-900">
+            <button id="cookie-policy-btn" class="text-[9px] font-mono tracking-[0.2em] uppercase text-neutral-500 hover:text-white transition-colors duration-300">
+                Ler detalhes
+            </button>
+            <div class="flex items-center gap-4">
+                <button id="cookie-reject" class="text-[9px] font-mono tracking-[0.2em] uppercase text-neutral-600 hover:text-neutral-400 transition-colors duration-300">
+                    Apenas essenciais
+                </button>
+                <button id="cookie-accept" class="text-[9px] font-mono tracking-[0.2em] uppercase text-white bg-neutral-900 border border-neutral-700 px-4 py-2 hover:bg-white hover:text-black transition-all duration-300">
+                    Aceitar tudo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal / Gaveta de Política de Cookies Detalhada -->
+<div id="cookie-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-500">
+    <div class="bg-[#050505] border border-neutral-800 max-w-xl w-full p-8 relative max-h-[85vh] overflow-y-auto">
+        
+        <button id="close-modal" class="absolute top-6 right-6 text-neutral-500 hover:text-white font-mono text-xs uppercase tracking-widest">
+            [ Fechar ]
+        </button>
+
+        <span class="text-[9px] font-mono tracking-[0.4em] text-neutral-600 uppercase block mb-2">Transparência</span>
+        <h3 class="text-white font-light text-2xl mb-6">Política de Cookies & Privacidade</h3>
+
+        <div class="space-y-4 text-[11px] text-neutral-400 font-light leading-relaxed">
+            <p>
+                Na <strong class="text-white font-normal">lavoura design</strong>, a privacidade é tratada com o mesmo cuidado e rigor aplicado aos projetos visuais. Este site foi construído de forma limpa (em Astro), reduzindo scripts desnecessários ao mínimo histórico.
+            </p>
+            <h4 class="text-white font-mono text-[10px] tracking-widest uppercase pt-2">1. O que são cookies?</h4>
+            <p>
+                Pequenos ficheiros de texto guardados no teu dispositivo para assegurar o correto funcionamento da navegação e analisar estatísticas de forma totalmente anónima.
+            </p>
+            <h4 class="text-white font-mono text-[10px] tracking-widest uppercase pt-2">2. Que dados recolhemos?</h4>
+            <p>
+                Apenas dados técnicos essenciais para renderização da página e métricas de tráfego agregado (sem identificação pessoal ou perfis de publicidade direcionada).
+            </p>
+            <h4 class="text-white font-mono text-[10px] tracking-widest uppercase pt-2">3. Gestão e Controlo</h4>
+            <p>
+                Podes a qualquer momento limpar os dados do site diretamente nas definições do teu navegador ou redefinir as tuas preferências por aqui.
+            </p>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-neutral-900 flex justify-end">
+            <button id="modal-accept-all" class="text-[10px] font-mono tracking-[0.25em] uppercase text-white border border-neutral-700 px-6 py-3 hover:bg-white hover:text-black transition-all duration-300">
+                Compreendido & Aceitar
+            </button>
+        </div>
+    </div>
+</div>
+
+<script is:inline>
+    (function() {
+        const banner = document.getElementById('cookie-banner');
+        const modal = document.getElementById('cookie-modal');
+        const acceptBtn = document.getElementById('cookie-accept');
+        const modalAcceptBtn = document.getElementById('modal-accept-all');
+        const rejectBtn = document.getElementById('cookie-reject');
+        const policyBtn = document.getElementById('cookie-policy-btn');
+        const closeModalBtn = document.getElementById('close-modal');
+
+        const consent = localStorage.getItem('lavoura_cookie_consent');
+
+        if (!consent) {
+            setTimeout(() => {
+                banner.classList.remove('translate-y-12', 'opacity-0', 'pointer-events-none');
+            }, 1200); // Aparece suavemente após 1.2s da página carregar
+        }
+
+        function hideBanner() {
+            banner.classList.add('translate-y-12', 'opacity-0', 'pointer-events-none');
+        }
+
+        function openModal(e) {
+            e.preventDefault();
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('lavoura_cookie_consent', 'all');
+            hideBanner();
+        });
+
+        modalAcceptBtn.addEventListener('click', () => {
+            localStorage.setItem('lavoura_cookie_consent', 'all');
+            closeModal();
+            hideBanner();
+        });
+
+        rejectBtn.addEventListener('click', () => {
+            localStorage.setItem('lavoura_cookie_consent', 'essential');
+            hideBanner();
+        });
+
+        policyBtn.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Fechar modal ao clicar fora
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    })();
+</script>
