@@ -11,18 +11,18 @@ import Layout from '../layouts/Layout.astro';
                 Lavoura Design
             </a>
             <nav class="flex items-center gap-8">
-                <a href="#projetos" class="text-[10px] font-mono tracking-[0.2em] text-neutral-400 hover:text-white transition-colors uppercase">Projetos</a>
-                <a href="#sobre" class="text-[10px] font-mono tracking-[0.2em] text-neutral-400 hover:text-white transition-colors uppercase">Sobre</a>
-                <a href="#contacto" class="text-[10px] font-mono tracking-[0.2em] text-white border border-neutral-800 px-4 py-2 hover:border-neutral-600 transition-colors uppercase">Contacto</a>
+                <a href="/projetos" class="text-[10px] font-mono tracking-[0.2em] text-neutral-400 hover:text-white transition-colors uppercase">Projetos</a>
+                <a href="/sobre" class="text-[10px] font-mono tracking-[0.2em] text-neutral-400 hover:text-white transition-colors uppercase">Sobre</a>
+                <a href="/contacto" class="text-[10px] font-mono tracking-[0.2em] text-white border border-neutral-800 px-4 py-2 hover:border-neutral-600 transition-colors uppercase">Contacto</a>
             </nav>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- CONTEÚDO PRINCIPAL (HERO / FRASE DE ENTRADA) -->
     <section class="relative z-10 min-h-screen flex flex-col justify-center px-8 max-w-6xl mx-auto pt-20">
         <div class="mb-8">
             <span class="text-[9px] font-mono tracking-[0.4em] text-neutral-500 uppercase">
-                Web Designer & UI/UX · Portugal
+                Web Design & UI/UX · Portugal
             </span>
         </div>
 
@@ -35,113 +35,14 @@ import Layout from '../layouts/Layout.astro';
         </p>
 
         <div class="flex items-center gap-6">
-            <a href="#projetos" class="group flex items-center gap-3 text-[10px] font-mono tracking-[0.25em] uppercase text-white bg-white/10 px-6 py-4 hover:bg-white/20 transition-all">
-                Ver projetos
+            <a href="/projetos" class="group flex items-center gap-3 text-[10px] font-mono tracking-[0.25em] uppercase text-white bg-white/10 px-6 py-4 hover:bg-white/20 transition-all">
+                Explorar projetos
                 <span class="group-hover:translate-x-1 transition-transform">→</span>
             </a>
-            <a href="#contacto" class="text-[10px] font-mono tracking-[0.25em] uppercase text-neutral-400 hover:text-white px-6 py-4 transition-colors">
-                Agendar reunião / Email
+            <a href="/sobre" class="text-[10px] font-mono tracking-[0.25em] uppercase text-neutral-400 hover:text-white px-6 py-4 transition-colors">
+                Conhecer percurso
             </a>
         </div>
     </section>
-
-    <!-- SECÇÃO DE PROJETOS (CARDS) -->
-    <section id="projetos" class="relative z-10 px-8 py-32 max-w-6xl mx-auto border-t border-neutral-900">
-        <div class="flex justify-between items-end mb-16">
-            <div>
-                <span class="text-[9px] font-mono tracking-[0.4em] text-neutral-500 uppercase block mb-2">Portefólio</span>
-                <h2 class="text-white text-2xl md:text-3xl font-light">Trabalhos em Destaque</h2>
-            </div>
-            <span class="text-[9px] font-mono text-neutral-600">— 2024 / 2026</span>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            <!-- CARD 1 -->
-            <a href="/projectos/placeholder-1" class="group block bg-[#0a0a0a] border border-neutral-900 hover:border-neutral-700 transition-all duration-500">
-                <div class="aspect-[16/10] bg-neutral-900 overflow-hidden relative flex items-center justify-center">
-                    <span class="text-[10px] font-mono text-neutral-600 tracking-widest">[ Mockup Placeholder 1 ]</span>
-                </div>
-                <div class="p-8">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="text-[8px] font-mono tracking-[0.2em] text-neutral-500 uppercase">UI/UX · E-commerce</span>
-                        <span class="text-xs text-neutral-600 group-hover:text-white transition-colors">→</span>
-                    </div>
-                    <h3 class="text-white text-base font-light tracking-wide mb-2">Nome do Projeto 1</h3>
-                    <p class="text-[11px] text-neutral-500 font-light leading-relaxed">
-                        Breve descrição do desafio de interface e do impacto gerado pelo design.
-                    </p>
-                </div>
-            </a>
-
-            <!-- CARD 2 -->
-            <a href="/projectos/placeholder-2" class="group block bg-[#0a0a0a] border border-neutral-900 hover:border-neutral-700 transition-all duration-500">
-                <div class="aspect-[16/10] bg-neutral-900 overflow-hidden relative flex items-center justify-center">
-                    <span class="text-[10px] font-mono text-neutral-600 tracking-widest">[ Mockup Placeholder 2 ]</span>
-                </div>
-                <div class="p-8">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="text-[8px] font-mono tracking-[0.2em] text-neutral-500 uppercase">Web Design · Landing Page</span>
-                        <span class="text-xs text-neutral-600 group-hover:text-white transition-colors">→</span>
-                    </div>
-                    <h3 class="text-white text-base font-light tracking-wide mb-2">Nome do Projeto 2</h3>
-                    <p class="text-[11px] text-neutral-500 font-light leading-relaxed">
-                        Breve descrição do projeto, foco na arquitetura de informação e conversão.
-                    </p>
-                </div>
-            </a>
-
-        </div>
-    </section>
-
-    <!-- SECÇÃO SOBRE / PERCURSO & SKILLS -->
-    <section id="sobre" class="relative z-10 px-8 py-32 max-w-6xl mx-auto border-t border-neutral-900">
-        <div class="max-w-3xl">
-            <span class="text-[9px] font-mono tracking-[0.4em] text-neutral-500 uppercase block mb-2">Sobre Mim</span>
-            <h2 class="text-white text-2xl md:text-3xl font-light mb-8">Percurso, académicas & stack técnica.</h2>
-            
-            <p class="text-sm text-neutral-400 font-light leading-relaxed mb-12">
-                [Inserir texto biográfico curto: quem és, o teu background académico e a tua abordagem rigorosa ao design e à experiência de utilizador.]
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-neutral-900 pt-12">
-                <div>
-                    <h3 class="text-[10px] font-mono tracking-[0.3em] text-neutral-500 uppercase mb-4">Stack & Ferramentas</h3>
-                    <ul class="text-xs text-neutral-300 font-light space-y-2 font-mono">
-                        <li>— Figma & UI Systems</li>
-                        <li>— Adobe Illustrator (Vetores & Precisão)</li>
-                        <li>— Adobe Photoshop (Tratamento de Imagem)</li>
-                        <li>— HTML / CSS / Webflow</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-[10px] font-mono tracking-[0.3em] text-neutral-500 uppercase mb-4">Percurso Académico</h3>
-                    <p class="text-xs text-neutral-400 font-light leading-relaxed">
-                        [Inserir detalhes da tua formação académica, escola/universidade e anos relevantes.]
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACTO / CTA FINAL -->
-    <section id="contacto" class="relative z-10 px-8 py-32 max-w-6xl mx-auto border-t border-neutral-900">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div>
-                <span class="text-[9px] font-mono tracking-[0.4em] text-neutral-500 uppercase block mb-2">Próximo Passo</span>
-                <h2 class="text-white text-3xl md:text-4xl font-light">Vamos trabalhar juntos?</h2>
-            </div>
-            <a href="mailto:teu.email@exemplo.com" class="text-xs font-mono tracking-[0.2em] uppercase text-white bg-white/10 px-8 py-5 hover:bg-white/20 transition-all text-center">
-                Enviar Email Direto →
-            </a>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="border-t border-neutral-900 py-12 px-8 text-center">
-        <p class="text-[9px] font-mono text-neutral-600 tracking-[0.3em] uppercase">
-            © 2026 Lavoura Design · Criado com rigor.
-        </p>
-    </footer>
 
 </Layout>
