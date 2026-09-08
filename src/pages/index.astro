@@ -1,232 +1,147 @@
-
 ---
-// src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
 ---
+
 <Layout title="lavoura design — Guilherme Ribeiro">
- 
-    <!-- Canvas de partículas no fundo -->
-    <canvas id="interactive-canvas" class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none opacity-40"></canvas>
- 
-    <!-- HERO -->
-    <section class="relative z-10 min-h-[88vh] flex flex-col justify-center px-8 max-w-5xl mx-auto">
-        
-        <div class="mb-12 fade-up" style="animation-delay: 0.1s">
-            <span class="text-[9px] font-mono tracking-[0.4em] text-neutral-600 uppercase">
-                Freelance Designer · Portugal
+
+    <!-- HEADER / NAVEGAÇÃO -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#050505]/80 backdrop-blur-md border-b border-neutral-900">
+        <div class="max-w-6xl mx-auto px-8 h-20 flex items-center justify-between">
+            <a href="/" class="text-white text-xs font-mono tracking-[0.3em] uppercase">
+                Lavoura Design
+            </a>
+            <nav class="flex items-center gap-8">
+                <a href="#projetos" class="text-[10px] font-mono tracking-[0.2em] text-neutral-400 hover:text-white transition-colors uppercase">Projetos</a>
+                <a href="#sobre" class="text-[10px] font-mono tracking-[0.2em] text-neutral-400 hover:text-white transition-colors uppercase">Sobre</a>
+                <a href="#contacto" class="text-[10px] font-mono tracking-[0.2em] text-white border border-neutral-800 px-4 py-2 hover:border-neutral-600 transition-colors uppercase">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative z-10 min-h-screen flex flex-col justify-center px-8 max-w-6xl mx-auto pt-20">
+        <div class="mb-8">
+            <span class="text-[9px] font-mono tracking-[0.4em] text-neutral-500 uppercase">
+                Web Designer & UI/UX · Portugal
             </span>
         </div>
- 
-        <h1 class="fade-up" style="animation-delay: 0.2s">
-            <span class="block text-white font-light text-5xl md:text-7xl leading-[1.05] tracking-tight mb-2">
-                Design que
-            </span>
-            <span class="block text-neutral-500 font-light text-5xl md:text-7xl leading-[1.05] tracking-tight italic">
-                cresce contigo.
-            </span>
+
+        <h1 class="text-white font-light text-5xl md:text-7xl leading-[1.05] tracking-tight mb-8 max-w-4xl">
+            Desenho interfaces que os utilizadores adoram e os negócios convertem.
         </h1>
- 
-        <p class="mt-10 text-[13px] text-neutral-500 font-light leading-relaxed max-w-sm fade-up" style="animation-delay: 0.35s">
-            Identidades visuais e ecossistemas digitais para negócios que querem ser reconhecidos. Feito com atenção, entregue com clareza.
+
+        <p class="text-[13px] text-neutral-400 font-light leading-relaxed max-w-xl mb-12">
+            Foco em experiências limpas, editoriais e orientadas a resultados. Trabalho com precisão técnica do vetor ao código.
         </p>
- 
-        <div class="mt-12 flex items-center gap-8 fade-up" style="animation-delay: 0.45s">
-            <a href="/projectos" class="group flex items-center gap-3 text-[10px] font-mono tracking-[0.25em] uppercase text-white">
-                <span class="w-8 h-[1px] bg-white group-hover:w-12 transition-all duration-300"></span>
+
+        <div class="flex items-center gap-6">
+            <a href="#projetos" class="group flex items-center gap-3 text-[10px] font-mono tracking-[0.25em] uppercase text-white bg-white/10 px-6 py-4 hover:bg-white/20 transition-all">
                 Ver projetos
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
             </a>
-            <a href="/contacto" class="text-[10px] font-mono tracking-[0.25em] uppercase text-neutral-600 hover:text-neutral-300 transition-colors duration-300">
-                Fala comigo
+            <a href="#contacto" class="text-[10px] font-mono tracking-[0.25em] uppercase text-neutral-400 hover:text-white px-6 py-4 transition-colors">
+                Agendar reunião / Email
             </a>
-        </div>
- 
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-12 left-8 flex items-center gap-3 fade-up" style="animation-delay: 0.6s">
-            <div class="w-[1px] h-8 bg-neutral-800 relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full bg-neutral-500 scroll-line"></div>
-            </div>
-            <span class="text-[8px] font-mono tracking-[0.4em] text-neutral-700 uppercase">Scroll</span>
         </div>
     </section>
- 
-    <!-- SERVIÇOS -->
-    <section class="relative z-10 px-8 py-24 max-w-5xl mx-auto border-t border-neutral-900">
-        
+
+    <!-- SECÇÃO DE PROJETOS (CARDS) -->
+    <section id="projetos" class="relative z-10 px-8 py-32 max-w-6xl mx-auto border-t border-neutral-900">
         <div class="flex justify-between items-end mb-16">
-            <h2 class="text-[9px] font-mono tracking-[0.4em] text-neutral-600 uppercase">O que faço</h2>
-            <span class="text-[9px] font-mono text-neutral-800">— 04 disciplinas</span>
+            <div>
+                <span class="text-[9px] font-mono tracking-[0.4em] text-neutral-500 uppercase block mb-2">Portefólio</span>
+                <h2 class="text-white text-2xl md:text-3xl font-light">Trabalhos em Destaque</h2>
+            </div>
+            <span class="text-[9px] font-mono text-neutral-600">— 2024 / 2026</span>
         </div>
- 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-neutral-900">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            <div class="bg-[#050505] p-8 group hover:bg-neutral-950 transition-colors duration-500">
-                <div class="flex justify-between items-start mb-8">
-                    <span class="text-[8px] font-mono text-neutral-700">01</span>
-                    <span class="text-[18px] opacity-20 group-hover:opacity-60 transition-opacity duration-500">⬡</span>
+            <!-- CARD 1 -->
+            <a href="/projectos/placeholder-1" class="group block bg-[#0a0a0a] border border-neutral-900 hover:border-neutral-700 transition-all duration-500">
+                <div class="aspect-[16/10] bg-neutral-900 overflow-hidden relative flex items-center justify-center">
+                    <span class="text-[10px] font-mono text-neutral-600 tracking-widest">[ Mockup Placeholder 1 ]</span>
                 </div>
-                <h3 class="text-white text-sm font-light tracking-wide mb-3">Identidade Visual</h3>
-                <p class="text-[11px] text-neutral-600 font-light leading-relaxed">
-                    Logótipo, paleta, tipografia e guia de marca. Tudo o que faz a tua marca ser reconhecida à primeira vista.
-                </p>
-            </div>
- 
-            <div class="bg-[#050505] p-8 group hover:bg-neutral-950 transition-colors duration-500">
-                <div class="flex justify-between items-start mb-8">
-                    <span class="text-[8px] font-mono text-neutral-700">02</span>
-                    <span class="text-[18px] opacity-20 group-hover:opacity-60 transition-opacity duration-500">⬡</span>
+                <div class="p-8">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-[8px] font-mono tracking-[0.2em] text-neutral-500 uppercase">UI/UX · E-commerce</span>
+                        <span class="text-xs text-neutral-600 group-hover:text-white transition-colors">→</span>
+                    </div>
+                    <h3 class="text-white text-base font-light tracking-wide mb-2">Nome do Projeto 1</h3>
+                    <p class="text-[11px] text-neutral-500 font-light leading-relaxed">
+                        Breve descrição do desafio de interface e do impacto gerado pelo design.
+                    </p>
                 </div>
-                <h3 class="text-white text-sm font-light tracking-wide mb-3">Redes Sociais</h3>
-                <p class="text-[11px] text-neutral-600 font-light leading-relaxed">
-                    Templates e peças gráficas para Instagram, LinkedIn e Facebook — com coerência visual e sem complicações.
-                </p>
-            </div>
- 
-            <div class="bg-[#050505] p-8 group hover:bg-neutral-950 transition-colors duration-500">
-                <div class="flex justify-between items-start mb-8">
-                    <span class="text-[8px] font-mono text-neutral-700">03</span>
-                    <span class="text-[18px] opacity-20 group-hover:opacity-60 transition-opacity duration-500">⬡</span>
+            </a>
+
+            <!-- CARD 2 -->
+            <a href="/projectos/placeholder-2" class="group block bg-[#0a0a0a] border border-neutral-900 hover:border-neutral-700 transition-all duration-500">
+                <div class="aspect-[16/10] bg-neutral-900 overflow-hidden relative flex items-center justify-center">
+                    <span class="text-[10px] font-mono text-neutral-600 tracking-widest">[ Mockup Placeholder 2 ]</span>
                 </div>
-                <h3 class="text-white text-sm font-light tracking-wide mb-3">Design para Impressão</h3>
-                <p class="text-[11px] text-neutral-600 font-light leading-relaxed">
-                    Flyers, cartazes, menus, cartões de visita. Materiais prontos para gráfica com atenção aos detalhes.
-                </p>
-            </div>
- 
-            <div class="bg-[#050505] p-8 group hover:bg-neutral-950 transition-colors duration-500">
-                <div class="flex justify-between items-start mb-8">
-                    <span class="text-[8px] font-mono text-neutral-700">04</span>
-                    <span class="text-[18px] opacity-20 group-hover:opacity-60 transition-opacity duration-500">⬡</span>
+                <div class="p-8">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-[8px] font-mono tracking-[0.2em] text-neutral-500 uppercase">Web Design · Landing Page</span>
+                        <span class="text-xs text-neutral-600 group-hover:text-white transition-colors">→</span>
+                    </div>
+                    <h3 class="text-white text-base font-light tracking-wide mb-2">Nome do Projeto 2</h3>
+                    <p class="text-[11px] text-neutral-500 font-light leading-relaxed">
+                        Breve descrição do projeto, foco na arquitetura de informação e conversão.
+                    </p>
                 </div>
-                <h3 class="text-white text-sm font-light tracking-wide mb-3">Web Design & UI</h3>
-                <p class="text-[11px] text-neutral-600 font-light leading-relaxed">
-                    Layouts para sites e landing pages com foco em clareza, usabilidade e identidade visual consistente.
-                </p>
-            </div>
- 
+            </a>
+
         </div>
     </section>
- 
-    <!-- CTA FINAL -->
-    <section class="relative z-10 px-8 py-24 max-w-5xl mx-auto border-t border-neutral-900">
-        <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-8">
-            <div>
-                <p class="text-[9px] font-mono tracking-[0.4em] text-neutral-700 uppercase mb-4">Próximo passo</p>
-                <h2 class="text-white font-light text-3xl md:text-4xl leading-tight">
-                    Tens um projeto<br/>
-                    <span class="text-neutral-600 italic">em mente?</span>
-                </h2>
+
+    <!-- SECÇÃO SOBRE / PERCURSO & SKILLS -->
+    <section id="sobre" class="relative z-10 px-8 py-32 max-w-6xl mx-auto border-t border-neutral-900">
+        <div class="max-w-3xl">
+            <span class="text-[9px] font-mono tracking-[0.4em] text-neutral-500 uppercase block mb-2">Sobre Mim</span>
+            <h2 class="text-white text-2xl md:text-3xl font-light mb-8">Percurso, académicas & stack técnica.</h2>
+            
+            <p class="text-sm text-neutral-400 font-light leading-relaxed mb-12">
+                [Inserir texto biográfico curto: quem és, o teu background académico e a tua abordagem rigorosa ao design e à experiência de utilizador.]
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-neutral-900 pt-12">
+                <div>
+                    <h3 class="text-[10px] font-mono tracking-[0.3em] text-neutral-500 uppercase mb-4">Stack & Ferramentas</h3>
+                    <ul class="text-xs text-neutral-300 font-light space-y-2 font-mono">
+                        <li>— Figma & UI Systems</li>
+                        <li>— Adobe Illustrator (Vetores & Precisão)</li>
+                        <li>— Adobe Photoshop (Tratamento de Imagem)</li>
+                        <li>— HTML / CSS / Webflow</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-[10px] font-mono tracking-[0.3em] text-neutral-500 uppercase mb-4">Percurso Académico</h3>
+                    <p class="text-xs text-neutral-400 font-light leading-relaxed">
+                        [Inserir detalhes da tua formação académica, escola/universidade e anos relevantes.]
+                    </p>
+                </div>
             </div>
-            <a href="/contacto" class="group flex items-center gap-4 text-[10px] font-mono tracking-[0.25em] uppercase text-white border border-neutral-800 px-6 py-4 hover:border-neutral-600 hover:bg-neutral-900 transition-all duration-300 self-start md:self-auto">
-                Fala comigo
-                <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
+        </div>
+    </section>
+
+    <!-- CONTACTO / CTA FINAL -->
+    <section id="contacto" class="relative z-10 px-8 py-32 max-w-6xl mx-auto border-t border-neutral-900">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+                <span class="text-[9px] font-mono tracking-[0.4em] text-neutral-500 uppercase block mb-2">Próximo Passo</span>
+                <h2 class="text-white text-3xl md:text-4xl font-light">Vamos trabalhar juntos?</h2>
+            </div>
+            <a href="mailto:teu.email@exemplo.com" class="text-xs font-mono tracking-[0.2em] uppercase text-white bg-white/10 px-8 py-5 hover:bg-white/20 transition-all text-center">
+                Enviar Email Direto →
             </a>
         </div>
     </section>
- 
+
+    <!-- FOOTER -->
+    <footer class="border-t border-neutral-900 py-12 px-8 text-center">
+        <p class="text-[9px] font-mono text-neutral-600 tracking-[0.3em] uppercase">
+            © 2026 Lavoura Design · Criado com rigor.
+        </p>
+    </footer>
+
 </Layout>
- 
-<style>
-    .fade-up {
-        opacity: 0;
-        transform: translateY(16px);
-        animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
- 
-    @keyframes fadeUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
- 
-    .scroll-line {
-        height: 40%;
-        animation: scrollDrop 2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-    }
- 
-    @keyframes scrollDrop {
-        0% { top: -40%; }
-        100% { top: 140%; }
-    }
- 
-    @media (prefers-reduced-motion: reduce) {
-        .fade-up { animation: none; opacity: 1; transform: none; }
-    }
-</style>
- 
-<script is:inline>
-    // Canvas de partículas (versão otimizada da original)
-    const canvas = document.getElementById('interactive-canvas');
-    const ctx = canvas.getContext('2d');
- 
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
- 
-    const particles = [];
-    const mouse = { x: null, y: null, radius: 140 };
- 
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-    });
- 
-    window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
-    window.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
-    window.addEventListener('touchmove', (e) => {
-        if (e.touches.length > 0) { mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; }
-    });
- 
-    class Particle {
-        constructor() {
-            this.reset();
-            this.y = Math.random() * height;
-        }
-        reset() {
-            this.x = this.baseX = Math.random() * width;
-            this.y = this.baseY = Math.random() * height;
-            this.size = Math.random() * 1.2 + 0.3;
-            this.density = Math.random() * 25 + 5;
-            this.alpha = Math.random() * 0.35 + 0.05;
-        }
-        draw() {
-            ctx.fillStyle = `rgba(255,255,255,${this.alpha})`;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-        update() {
-            if (mouse.x !== null) {
-                let dx = mouse.x - this.x;
-                let dy = mouse.y - this.y;
-                let dist = Math.hypot(dx, dy);
-                if (dist < mouse.radius) {
-                    let force = (mouse.radius - dist) / mouse.radius;
-                    this.x -= (dx / dist) * force * this.density * 0.6;
-                    this.y -= (dy / dist) * force * this.density * 0.6;
-                    this.alpha = Math.min(this.alpha + 0.03, 0.7);
-                } else {
-                    this.x -= (this.x - this.baseX) / 25;
-                    this.y -= (this.y - this.baseY) / 25;
-                    if (this.alpha > 0.05) this.alpha -= 0.003;
-                }
-            } else {
-                const t = Date.now() * 0.0008;
-                this.baseX += Math.sin(t + this.density) * 0.04;
-                this.baseY += Math.cos(t + this.density) * 0.04;
-                this.x -= (this.x - this.baseX) / 15;
-                this.y -= (this.y - this.baseY) / 15;
-            }
-        }
-    }
- 
-    const count = Math.min(Math.floor((width * height) / 10000), 100);
-    for (let i = 0; i < count; i++) particles.push(new Particle());
- 
-    function animate() {
-        ctx.clearRect(0, 0, width, height);
-        particles.forEach(p => { p.update(); p.draw(); });
-        requestAnimationFrame(animate);
-    }
-    animate();
-</script>
- 
