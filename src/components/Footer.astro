@@ -1,0 +1,55 @@
+---
+import { site, socials, cv } from '../data/site';
+
+const year = new Date().getFullYear();
+const heading = 'text-[10px] font-mono tracking-[0.2em] uppercase text-neutral-600 mb-5';
+const link = 'text-sm text-neutral-500 hover:text-neutral-200 transition-colors duration-300';
+---
+<footer class="w-full px-8 pt-16 pb-7 border-t border-neutral-900 z-10">
+    <div class="max-w-6xl mx-auto grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div class="space-y-4">
+            <p class="text-white font-light text-lg">{site.name}</p>
+            <p class="text-sm text-neutral-500 max-w-xs leading-relaxed">
+                Design gráfico e web em {site.city}. Marcas, interfaces e sites feitos à medida.
+            </p>
+            <a href={`mailto:${site.email}`} class={link}>{site.email}</a>
+        </div>
+
+        <nav aria-label="Pontos importantes">
+            <h2 class={heading}>No site</h2>
+            <ul class="space-y-3">
+                <li><a href="/sobre" class={link}>Sobre mim</a></li>
+                <li><a href="/projectos" class={link}>Projetos</a></li>
+                <li><a href="/contacto" class={link}>Contacto</a></li>
+                <li><a href="/sobre#cv" class={link}>Transferir CV</a></li>
+            </ul>
+        </nav>
+
+        <nav aria-label="CV">
+            <h2 class={heading}>CV</h2>
+            <ul class="space-y-3">
+                <li><a href={cv.pt} download class={link}>Português (PDF)</a></li>
+                <li><a href={cv.en} download class={link}>English (PDF)</a></li>
+            </ul>
+        </nav>
+
+        <nav aria-label="Redes sociais">
+            <h2 class={heading}>Redes</h2>
+            <ul class="space-y-3">
+                {socials.map((s) => (
+                    <li><a href={s.url} target="_blank" rel="noopener noreferrer" class={link}>{s.label}</a></li>
+                ))}
+                <li><a href={`mailto:${site.email}`} class={link}>Email</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="max-w-6xl mx-auto mt-16 pt-7 border-t border-neutral-900 flex flex-wrap justify-between items-center gap-4">
+        <span class="text-[9px] font-mono tracking-widest text-neutral-700 uppercase">
+            © {year} {site.name}
+        </span>
+        <a href="/privacidade" class="text-[9px] font-mono tracking-widest text-neutral-600 hover:text-neutral-300 uppercase transition-colors duration-300">
+            Política de privacidade
+        </a>
+    </div>
+</footer>

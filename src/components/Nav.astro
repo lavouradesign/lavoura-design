@@ -1,0 +1,118 @@
+---
+import { searchIndex } from '../data/site';
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const links = [
+    { href: '/projectos', label: 'Projetos' },
+    { href: '/sobre', label: 'Sobre' },
+    { href: '/contacto', label: 'Contacto' },
+];
+const linkBase = 'nav-link text-[10px] font-mono tracking-[0.2em] uppercase transition-colors duration-300';
+const ghostBtn = 'flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] uppercase text-neutral-600 hover:text-neutral-300 transition-colors duration-300 cursor-pointer';
+---
+<header class="sticky top-0 w-full px-8 py-7 flex justify-between items-center z-20 border-b border-neutral-900 bg-[#050505]/90 backdrop-blur">
+    <a href="/" class="group flex items-center gap-3">
+        <img
+            src="/Arte2_3727834b-75d8-419d-917b-1f00881b04bc.png"
+            alt="Lavoura Design"
+            class="h-5 w-auto opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+        />
+        <span class="text-[10px] font-mono tracking-[0.25em] text-neutral-500 uppercase group-hover:text-neutral-300 transition-colors duration-300">
+            lavoura
+        </span>
+    </a>
+
+    <div class="flex items-center gap-8">
+        <nav id="nav-links" class="flex items-center gap-8" aria-label="Principal">
+            {links.map((l) => {
+                const active = currentPath === l.href || currentPath.startsWith(l.href + '/');
+                return (
+                    <a href={l.href} aria-current={active ? 'page' : undefined}
+                       class={`${linkBase} ${active ? 'text-white' : 'text-neutral-600 hover:text-neutral-300'}`}>
+                        {l.label}
+                    </a>
+                );
+            })}
+        </nav>
+
+        <button id="open-search" type="button" aria-haspopup="dialog" class={ghostBtn}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            Pesquisar
+        </button>
+
+        <button id="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links" class={`sm:hidden ${ghostBtn}`}>
+            Menu
+        </button>
+    </div>
+
+    <dialog id="search-dialog" aria-label="Pesquisar no site"
+        class="w-[min(92vw,560px)] mx-auto mt-[8vh] p-0 bg-[#0a0a0a] text-neutral-300 border border-neutral-800 backdrop:bg-black/70">
+        <div class="flex border-b border-neutral-900">
+            <input id="search-input" type="search" placeholder="Pesquisar no site" autocomplete="off" aria-label="Pesquisar no site"
+                class="flex-1 bg-transparent px-5 py-4 text-sm text-white placeholder:text-neutral-600 outline-none" />
+            <button id="close-search" type="button"
+                class="px-5 text-[10px] font-mono tracking-[0.2em] uppercase text-neutral-600 hover:text-neutral-300 transition-colors duration-300">
+                Fechar
+            </button>
+        </div>
+        <ul id="search-results" class="max-h-[50vh] overflow-auto p-2"></ul>
+        <p id="search-empty" hidden class="px-5 py-4 text-sm text-neutral-600">Sem resultados. Tenta outra palavra.</p>
+    </dialog>
+
+    <script type="application/json" id="search-data" set:html={JSON.stringify(searchIndex)} />
+</header>
+
+<script>
+    const norm = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    const dialog = document.getElementById('search-dialog') as HTMLDialogElement;
+    const input = document.getElementById('search-input') as HTMLInputElement;
+    const list = document.getElementById('search-results') as HTMLUListElement;
+    const empty = document.getElementById('search-empty') as HTMLElement;
+    const data: { title: string; url: string; text: string }[] = JSON.parse(
+        document.getElementById('search-data')!.textContent || '[]'
+    );
+
+    function render(q: string) {
+        const terms = norm(q).split(/\s+/).filter(Boolean);
+        const hits = terms.length
+            ? data.filter((d) => terms.every((t) => norm(d.title + ' ' + d.text).includes(t)))
+            : data.slice(0, 6);
+        list.innerHTML = '';
+        hits.forEach((d) => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = d.url;
+            a.textContent = d.title;
+            a.className = 'block px-4 py-3 text-sm text-neutral-300 hover:bg-neutral-900 hover:text-white focus-visible:bg-neutral-900 focus-visible:text-white transition-colors duration-200';
+            li.appendChild(a);
+            list.appendChild(li);
+        });
+        empty.hidden = hits.length > 0;
+    }
+
+    function openSearch() { render(''); input.value = ''; dialog.showModal(); input.focus(); }
+
+    document.getElementById('open-search')!.addEventListener('click', openSearch);
+    document.getElementById('close-search')!.addEventListener('click', () => dialog.close());
+    input.addEventListener('input', () => render(input.value));
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+    list.addEventListener('click', () => dialog.close());
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') (list.querySelector('a') as HTMLAnchorElement | null)?.click();
+    });
+    document.addEventListener('keydown', (e) => {
+        const t = e.target as HTMLElement;
+        const typing = ['INPUT', 'TEXTAREA'].includes(t.tagName);
+        if ((e.key === '/' && !typing) || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) {
+            e.preventDefault();
+            openSearch();
+        }
+    });
+
+    const menuBtn = document.getElementById('menu-btn')!;
+    const navLinks = document.getElementById('nav-links')!;
+    menuBtn.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', String(open));
+    });
+</script>

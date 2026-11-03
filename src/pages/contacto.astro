@@ -1,158 +1,89 @@
-
 ---
-// src/pages/contacto.astro
 import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+
+const field = 'w-full bg-transparent border border-neutral-800 px-4 py-3 text-neutral-200 placeholder:text-neutral-700 focus:border-neutral-400 outline-none transition-colors duration-300';
+const label = 'block space-y-2 text-[10px] font-mono tracking-[0.2em] uppercase text-neutral-500';
 ---
-<Layout title="Contacto — lavoura design">
- 
-    <div class="max-w-5xl mx-auto px-8 py-20">
- 
-        <!-- Header -->
-        <div class="flex items-end justify-between mb-20 pb-8 border-b border-neutral-900 fade-up">
-            <h1 class="text-[9px] font-mono tracking-[0.4em] text-neutral-600 uppercase">Contacto</h1>
-        </div>
- 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
- 
-            <!-- Lado esquerdo: headline e info -->
-            <div class="fade-up" style="animation-delay: 0.1s">
-                <h2 class="text-white font-light text-3xl md:text-4xl leading-snug tracking-tight mb-8">
-                    Vamos cultivar<br/>
-                    <span class="text-neutral-600 italic">algo juntos.</span>
-                </h2>
-                <p class="text-[12px] text-neutral-500 font-light leading-relaxed mb-12">
-                    Tens um projeto, uma ideia ou uma dúvida? Escreve-me. Respondo sempre em menos de 24 horas.
+<Layout title="Contacto — Lavoura Design" description="Fala com o Guilherme Lavoura sobre o teu projeto de design ou website.">
+    <section class="px-8 py-20 sm:py-28">
+        <div class="max-w-6xl mx-auto grid gap-12 md:grid-cols-[1fr_1.4fr]">
+            <div class="space-y-6">
+                <h1 class="text-4xl sm:text-5xl font-light text-white tracking-tight">Contacto</h1>
+                <p class="text-neutral-400 leading-relaxed">Conta-me o que precisas. Respondo por email.</p>
+                <p class="text-sm text-neutral-500">
+                    Preferes escrever diretamente?<br />
+                    <a href={`mailto:${site.email}`} class="text-neutral-200 hover:text-white underline underline-offset-4 decoration-neutral-700">{site.email}</a>
                 </p>
- 
-                <div class="space-y-6">
-                    <div class="border-b border-neutral-900 pb-5">
-                        <p class="text-[8px] font-mono text-neutral-700 tracking-widest uppercase mb-2">Email</p>
-                        <a href="mailto:guilavourar@gmail.com" class="text-[11px] text-neutral-400 hover:text-white transition-colors duration-300 font-mono">
-                            guilavourar@gmail.com ↗
-                        </a>
-                    </div>
-                    <div class="border-b border-neutral-900 pb-5">
-                        <p class="text-[8px] font-mono text-neutral-700 tracking-widest uppercase mb-2">Instagram</p>
-                        <a href="https://instagram.com/lavouradesign" target="_blank" class="text-[11px] text-neutral-400 hover:text-white transition-colors duration-300 font-mono">
-                            @lavouradesign ↗
-                        </a>
-                    </div>
-                    <div class="border-b border-neutral-900 pb-5">
-                        <p class="text-[8px] font-mono text-neutral-700 tracking-widest uppercase mb-2">Localização</p>
-                        <span class="text-[11px] text-neutral-600 font-mono">Figueira da Foz, Portugal</span>
-                    </div>
-                    <div class="pb-5">
-                        <p class="text-[8px] font-mono text-neutral-700 tracking-widest uppercase mb-2">Disponibilidade</p>
-                        <div class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse"></div>
-                            <span class="text-[11px] text-neutral-600 font-mono">Disponível para novos projetos</span>
-                        </div>
-                    </div>
-                </div>
             </div>
- 
-            <!-- Lado direito: formulário simples -->
-            <div class="fade-up" style="animation-delay: 0.2s">
-                <form id="contact-form" class="space-y-6">
- 
-                    <div class="field-group">
-                        <label class="text-[8px] font-mono text-neutral-700 tracking-widest uppercase block mb-2">Nome</label>
-                        <input 
-                            type="text" 
-                            name="nome"
-                            placeholder="O teu nome"
-                            class="w-full bg-transparent border-b border-neutral-800 py-3 text-[12px] text-neutral-300 placeholder-neutral-700 font-light focus:outline-none focus:border-neutral-500 transition-colors duration-300"
-                        />
-                    </div>
- 
-                    <div class="field-group">
-                        <label class="text-[8px] font-mono text-neutral-700 tracking-widest uppercase block mb-2">Email</label>
-                        <input 
-                            type="email" 
-                            name="email"
-                            placeholder="o.teu@email.com"
-                            class="w-full bg-transparent border-b border-neutral-800 py-3 text-[12px] text-neutral-300 placeholder-neutral-700 font-light focus:outline-none focus:border-neutral-500 transition-colors duration-300"
-                        />
-                    </div>
- 
-                    <div class="field-group">
-                        <label class="text-[8px] font-mono text-neutral-700 tracking-widest uppercase block mb-2">Tipo de projeto</label>
-                        <select 
-                            name="tipo"
-                            class="w-full bg-transparent border-b border-neutral-800 py-3 text-[12px] text-neutral-600 font-light focus:outline-none focus:border-neutral-500 transition-colors duration-300 cursor-pointer appearance-none"
-                        >
-                            <option value="" disabled selected class="bg-[#050505]">Seleciona uma opção</option>
-                            <option value="identidade" class="bg-[#050505] text-neutral-300">Identidade Visual</option>
-                            <option value="redes" class="bg-[#050505] text-neutral-300">Redes Sociais</option>
-                            <option value="print" class="bg-[#050505] text-neutral-300">Design para Impressão</option>
-                            <option value="web" class="bg-[#050505] text-neutral-300">Web Design & UI</option>
-                            <option value="outro" class="bg-[#050505] text-neutral-300">Outro</option>
-                        </select>
-                    </div>
- 
-                    <div class="field-group">
-                        <label class="text-[8px] font-mono text-neutral-700 tracking-widest uppercase block mb-2">Mensagem</label>
-                        <textarea 
-                            name="mensagem"
-                            rows="4"
-                            placeholder="Conta-me sobre o teu projeto..."
-                            class="w-full bg-transparent border-b border-neutral-800 py-3 text-[12px] text-neutral-300 placeholder-neutral-700 font-light focus:outline-none focus:border-neutral-500 transition-colors duration-300 resize-none"
-                        ></textarea>
-                    </div>
- 
-                    <!-- O formulário abre o cliente de email por simplicidade -->
-                    <button 
-                        type="button"
-                        id="submit-btn"
-                        class="group flex items-center gap-4 text-[10px] font-mono tracking-[0.25em] uppercase text-white border border-neutral-800 px-6 py-4 hover:border-neutral-600 hover:bg-neutral-900 transition-all duration-300 mt-4"
-                    >
-                        Enviar mensagem
-                        <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
-                    </button>
- 
-                    <p class="text-[9px] font-mono text-neutral-800">
-                        Ou escreve diretamente para <a href="mailto:guilavourar@gmail.com" class="text-neutral-600 hover:text-neutral-400 transition-colors">guilavourar@gmail.com</a>
-                    </p>
- 
-                </form>
-            </div>
- 
+
+            <form id="contact-form" novalidate class="space-y-6 max-w-xl">
+                <label class={label}>
+                    <span>Nome</span>
+                    <input name="name" type="text" autocomplete="name" required maxlength="100" class={`${field} normal-case tracking-normal font-sans text-base`} />
+                </label>
+                <label class={label}>
+                    <span>Email</span>
+                    <input name="email" type="email" autocomplete="email" required maxlength="150" class={`${field} normal-case tracking-normal font-sans text-base`} />
+                </label>
+                <label class={label}>
+                    <span>Mensagem</span>
+                    <textarea name="message" required maxlength="3000" rows="6" class={`${field} min-h-40 resize-y normal-case tracking-normal font-sans text-base`}></textarea>
+                </label>
+
+                <input name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" class="absolute -left-[9999px]" />
+
+                <p class="text-xs text-neutral-600 leading-relaxed">
+                    Ao enviar, aceitas que uso os teus dados só para te responder. Vê a
+                    <a href="/privacidade" class="underline underline-offset-4 decoration-neutral-700 hover:text-neutral-300">política de privacidade</a>.
+                </p>
+
+                <button id="send" type="submit"
+                    class="bg-white text-black px-6 py-3 text-[11px] font-mono tracking-[0.2em] uppercase hover:bg-neutral-300 disabled:opacity-50 disabled:cursor-wait transition-colors duration-300 cursor-pointer">
+                    Enviar mensagem
+                </button>
+                <p id="form-status" role="status" aria-live="polite" class="min-h-6 text-sm"></p>
+            </form>
         </div>
- 
-    </div>
- 
+    </section>
 </Layout>
- 
-<style>
-    .fade-up {
-        opacity: 0;
-        transform: translateY(14px);
-        animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-    @keyframes fadeUp {
-        to { opacity: 1; transform: translateY(0); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-        .fade-up { animation: none; opacity: 1; transform: none; }
-    }
- 
-    input::placeholder,
-    textarea::placeholder {
-        font-size: 11px;
-    }
-</style>
- 
-<script is:inline>
-    // Botão de submissão abre email com os dados preenchidos
-    document.getElementById('submit-btn')?.addEventListener('click', () => {
-        const nome = document.querySelector('[name="nome"]').value;
-        const tipo = document.querySelector('[name="tipo"]').value;
-        const mensagem = document.querySelector('[name="mensagem"]').value;
- 
-        const subject = encodeURIComponent(`Projeto via lavouradesign.com${tipo ? ' — ' + tipo : ''}`);
-        const body = encodeURIComponent(
-            `Olá Guilherme,\n\nO meu nome é ${nome || '[nome]'}.\n\n${mensagem || '[mensagem]'}\n\nObrigado.`
-        );
-        window.location.href = `mailto:guilavourar@gmail.com?subject=${subject}&body=${body}`;
+
+<script define:vars={{ email: site.email }}>
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    const btn = document.getElementById('send');
+    const base = 'min-h-6 text-sm ';
+    const OK = base + 'text-neutral-200';
+    const ERR = base + 'text-red-400';
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        status.className = base + 'text-neutral-500';
+        const data = Object.fromEntries(new FormData(form));
+
+        if (!data.name.trim() || !/^\S+@\S+\.\S+$/.test(data.email) || data.message.trim().length < 10) {
+            status.className = ERR;
+            status.textContent = 'Preenche o nome, um email válido e uma mensagem com pelo menos 10 caracteres.';
+            return;
+        }
+
+        btn.disabled = true;
+        status.textContent = 'A enviar…';
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+            if (!res.ok) throw new Error();
+            form.reset();
+            status.className = OK;
+            status.textContent = 'Mensagem enviada. Respondo em breve.';
+        } catch {
+            status.className = ERR;
+            status.textContent = `Não foi possível enviar. Tenta novamente ou escreve para ${email}.`;
+        } finally {
+            btn.disabled = false;
+        }
     });
 </script>

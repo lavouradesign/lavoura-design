@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+
+const h2 = 'text-white text-lg font-light pt-8';
+const a = 'underline underline-offset-4 decoration-neutral-700 hover:text-white';
+---
+<Layout title="Política de privacidade — Lavoura Design" description="Como o site Lavoura Design trata os teus dados pessoais.">
+    <section class="px-8 py-20 sm:py-28">
+        <div class="max-w-3xl mx-auto space-y-4 leading-relaxed">
+            <h1 class="text-4xl sm:text-5xl font-light text-white tracking-tight">Política de privacidade</h1>
+            <p class="text-neutral-600 text-sm">Última atualização: outubro de 2026.</p>
+
+            <h2 class={h2}>Quem trata os teus dados</h2>
+            <p>{site.name}, de Guilherme, em {site.city}. Contacto: <a href={`mailto:${site.email}`} class={a}>{site.email}</a>.</p>
+
+            <h2 class={h2}>Que dados recolho</h2>
+            <ul class="list-disc pl-5 space-y-2">
+                <li>Nome, email e mensagem, quando usas o formulário de contacto.</li>
+                <li>Uma preferência de cookies, guardada no teu browser (localStorage), para não te voltar a perguntar.</li>
+            </ul>
+
+            <h2 class={h2}>Para que uso os dados</h2>
+            <p>Só para responder ao teu pedido. Não uso os dados para publicidade e não os vendo.</p>
+
+            <h2 class={h2}>Com quem os partilho</h2>
+            <p>
+                As mensagens são enviadas através do serviço Resend, que entrega o email na minha caixa de correio.
+                O site está alojado na Vercel, que pode registar dados técnicos de acesso, como o endereço IP.
+            </p>
+
+            <h2 class={h2}>Quanto tempo guardo</h2>
+            <p>As mensagens ficam na minha caixa de correio enquanto forem necessárias para a conversa ou para cumprir obrigações legais. Depois apago-as.</p>
+
+            <h2 class={h2}>Os teus direitos</h2>
+            <p>
+                Podes pedir acesso, retificação ou apagamento dos teus dados, ou opor-te ao tratamento, escrevendo para
+                <a href={`mailto:${site.email}`} class={a}>{site.email}</a>. Também podes apresentar reclamação à CNPD (cnpd.pt).
+            </p>
+
+            <!-- TODO: se adicionares Google Analytics, Vercel Analytics ou outras ferramentas, atualiza esta página e o aviso de cookies. -->
+        </div>
+    </section>
+</Layout>

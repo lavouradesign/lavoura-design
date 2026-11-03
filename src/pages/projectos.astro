@@ -1,39 +1,49 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { projects } from '../data/site';
+
+const dt = 'text-[10px] font-mono tracking-[0.2em] uppercase text-neutral-600 pt-1';
 ---
+<Layout title="Projetos — Lavoura Design" description="Projetos de destaque de Guilherme Lavoura: identidade visual, web design e conteúdo para redes sociais.">
+    <section class="px-8 py-20 sm:py-28">
+        <div class="max-w-6xl mx-auto space-y-6">
+            <h1 class="text-4xl sm:text-5xl font-light text-white tracking-tight">Projetos</h1>
+            <p class="text-neutral-400 max-w-xl leading-relaxed">
+                Uma seleção de trabalhos reais e projetos especulativos. Cada um explica o que era preciso,
+                o que fiz e com que ferramentas.
+            </p>
+        </div>
+    </section>
 
-<Layout title="Projetos — Para Breve | Lavoura Design">
-  <main class="relative z-10 min-h-[80vh] flex flex-col justify-center px-8 max-w-5xl mx-auto">
-    
-    <!-- Cabeçalho / Categoria -->
-    <div class="mb-12 fade-up" style="animation-delay: 0.1s;">
-      <span class="text-[9px] font-mono tracking-[0.4em] text-neutral-600 uppercase">
-        02 projetos
-      </span>
-    </div>
-
-    <!-- Título Principal -->
-    <h1 class="fade-up mb-6" style="animation-delay: 0.2s;">
-      <span class="block text-white font-light text-5xl md:text-7xl leading-[1.05] tracking-tight mb-2">
-        Para breve.
-      </span>
-      <span class="block text-neutral-500 font-light text-5xl md:text-7xl leading-[1.05] tracking-tight italic">
-        Estamos a preparar novidades
-      </span>
-    </h1>
-
-    <!-- Descrição -->
-    <p class="text-neutral-400 font-light text-sm md:text-base max-w-lg mb-12 fade-up" style="animation-delay: 0.3s;">
-      O portefólio está a ser atualizado com novos trabalhos de identidade visual e ecossistemas digitais. Fica atento.
-    </p>
-
-    <!-- Link para voltar -->
-    <div class="fade-up" style="animation-delay: 0.4s;">
-      <a href="/" class="inline-flex items-center gap-3 group text-[10px] font-mono uppercase tracking-[0.4em] text-white">
-        <span class="w-8 h-[1px] bg-white group-hover:w-12 transition-all duration-300"></span>
-        Voltar ao início
-      </a>
-    </div>
-
-  </main>
+    <section class="px-8 pb-24">
+        <div class="max-w-6xl mx-auto">
+            {projects.map((p) => (
+                <article id={p.id} class="grid gap-10 md:grid-cols-[1fr_1.4fr] py-14 border-t border-neutral-900">
+                    <div class="space-y-6">
+                        <div class="flex h-56 border border-neutral-900 overflow-hidden" aria-hidden={p.image ? undefined : 'true'}>
+                            {p.image
+                                ? <img src={p.image} alt={`Imagem do projeto ${p.title}`} loading="lazy" class="w-full h-full object-cover" />
+                                : p.colors.map((c, i) => <span class={i === 0 ? 'flex-[3]' : 'flex-1'} style={`background:${c}`} />)}
+                        </div>
+                        <dl class="grid grid-cols-[7rem_1fr] gap-x-4 gap-y-3 text-sm">
+                            <dt class={dt}>Tipo</dt><dd>{p.status}</dd>
+                            <dt class={dt}>Papel</dt><dd>{p.role}</dd>
+                            <dt class={dt}>Ferramentas</dt><dd>{p.tools.join(', ')}</dd>
+                        </dl>
+                    </div>
+                    <div class="space-y-5">
+                        <h2 class="text-2xl font-light text-white">{p.title}</h2>
+                        <p class="text-neutral-200">{p.summary}</p>
+                        {p.details.map((d) => <p class="text-neutral-500 leading-relaxed max-w-prose">{d}</p>)}
+                        {p.link && (
+                            <a href={p.link.url} target="_blank" rel="noopener noreferrer"
+                               class="inline-block border border-neutral-700 text-neutral-300 px-6 py-3 text-[11px] font-mono tracking-[0.2em] uppercase hover:border-white hover:text-white transition-colors duration-300">
+                                {p.link.label} ↗
+                            </a>
+                        )}
+                    </div>
+                </article>
+            ))}
+        </div>
+    </section>
 </Layout>
