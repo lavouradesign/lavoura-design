@@ -1,43 +1,182 @@
 ---
+// Página "Em construção" — Lavoura Design
 ---
 
+<!doctype html>
 <html lang="pt">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lavoura Design - Em Construção</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html, body {
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
-        background-color: #050505;
-      }
-      .maintenance-container {
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #050505;
-      }
-      .maintenance-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        user-select: none;
-        pointer-events: none;
-      }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Em construção — Lavoura Design</title>
+    <meta name="description" content="O site da Lavoura Design está em construção." />
+    <link rel="icon" type="image/png" href="public/Arte2_3727834b-75d8-419d-917b-1f00881b04bc.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div class="maintenance-container">
-      <img src="/web.png" alt="Lavoura Design - Em Construção" />
-    </div>
+    <main>
+      <!-- Fundo: gradiente + ondas + grão -->
+      <svg
+        class="bg"
+        viewBox="0 0 1366 768"
+        preserveAspectRatio="xMidYMid slice"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient id="base" x1="0" y1="0" x2="1" y2="0.6">
+            <stop offset="0" stop-color="#2f6b22" />
+            <stop offset="0.55" stop-color="#1f4a17" />
+            <stop offset="1" stop-color="#0e260b" />
+          </linearGradient>
+
+          <linearGradient id="waveTop" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1fa84f" />
+            <stop offset="1" stop-color="#26b457" />
+          </linearGradient>
+
+          <linearGradient id="pocketTop" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#14340f" />
+            <stop offset="1" stop-color="#0a1c08" />
+          </linearGradient>
+
+          <linearGradient id="waveBottom" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#157a3a" />
+            <stop offset="0.5" stop-color="#1fa84f" />
+            <stop offset="1" stop-color="#1c9a47" />
+          </linearGradient>
+
+          <linearGradient id="pocketBottom" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2e6b1f" />
+            <stop offset="1" stop-color="#1d4a14" />
+          </linearGradient>
+
+          <!-- Sombra suave para dar profundidade às ondas -->
+          <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="14" />
+            <feOffset dx="-6" dy="10" result="off" />
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="0.45" />
+            </feComponentTransfer>
+            <feMerge>
+              <feMergeNode />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          <!-- Grão -->
+          <filter id="grain" x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+            <feComponentTransfer>
+              <feFuncA type="table" tableValues="0 0.55" />
+            </feComponentTransfer>
+          </filter>
+        </defs>
+
+        <rect width="1366" height="768" fill="url(#base)" />
+
+        <!-- Onda superior direita -->
+        <path
+          d="M560,0 C760,60 900,200 1100,270 C1250,320 1366,260 1366,200 L1366,0 Z"
+          fill="url(#waveTop)"
+          filter="url(#soft)"
+        />
+        <path
+          d="M960,0 C1050,90 1180,135 1262,110 C1320,92 1366,55 1366,40 L1366,0 Z"
+          fill="url(#pocketTop)"
+        />
+
+        <!-- Onda inferior esquerda -->
+        <path
+          d="M0,520 C150,478 300,500 450,600 C560,676 650,738 730,768 L0,768 Z"
+          fill="url(#waveBottom)"
+          filter="url(#soft)"
+        />
+        <path
+          d="M30,768 C85,700 150,662 222,662 C302,672 352,732 382,768 Z"
+          fill="url(#pocketBottom)"
+        />
+
+        <!-- Grão por cima de tudo -->
+        <rect width="1366" height="768" filter="url(#grain)" opacity="0.5" style="mix-blend-mode: overlay" />
+      </svg>
+
+      <div class="content">
+        <h1>Em construção</h1>
+        <a href="https://instagram.com/lavoura.design" target="_blank" rel="noopener noreferrer">
+          @lavoura.design
+        </a>
+      </div>
+    </main>
   </body>
 </html>
+
+<style is:global>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    height: 100%;
+    background: #0e260b;
+  }
+
+  main {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: 24px;
+  }
+
+  .bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #e9fff1;
+    font-family: "Bebas Neue", "DIN Condensed", "Arial Narrow", Impact, sans-serif;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    font-weight: 400;
+    font-size: clamp(3.2rem, 11vw, 8.5rem);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+  }
+
+  .content a {
+    display: inline-block;
+    margin-top: 0.6rem;
+    color: inherit;
+    text-decoration: none;
+    font-size: clamp(0.9rem, 1.6vw, 1.25rem);
+    letter-spacing: 0.04em;
+    opacity: 0.92;
+    transition: opacity 0.2s ease;
+  }
+
+  .content a:hover,
+  .content a:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+</style>
